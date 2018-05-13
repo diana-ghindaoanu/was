@@ -75,6 +75,7 @@ The _io_ library provides simple input and output functions.
 
 | Function | Import Statement | Descriptions |
 |----------|------------|--------------|
+| `mem`    | ````(import "io" "mem" (memory _minPage_))```` | The memory (if it was set with the _--memory_ option). _minPage_ is the minimum number of pages specified |
 | `readstr` | ````(import "io" "readstr" (func $readstr (param $strAddr i32) (param $length i32) (result i32)))```` | Reads a string from the standard input and writes it into the memory. The reading is stopped when the return key is pressed, maximum _$length_ bytes are written to the memory. A _\0_ character is added to the buffer. _$strAddr_ is the memory location where the string will be written. The function returns the  number of charcters read (without the _\0_) |
 | `readchar` | ````(import "io" "readchar" (func $readchar (result i32)))```` | Reads a charcter from the standard input and returns it |
 | `readint` | ````(import "io" "readint" (func $readint (result i32)))```` | Reads a signed integer from the standard input and returns it |
