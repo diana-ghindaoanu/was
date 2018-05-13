@@ -139,7 +139,7 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 		console.error (argv.filename+' '+e.message);
 	}
 }).command(['run <filename> [options]', 'r'], 'Run a file', (yargs) => {
-	yargs.option ('imports', {
+	yargs.option ('import', {
 		alias: 'i',
 		type: 'array',
 		desc: 'Load module (javascript)'

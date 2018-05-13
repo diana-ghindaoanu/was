@@ -80,18 +80,25 @@ module.exports = {
 	{
 		let n = 0;
 		let nr = true;
+		let minus = null;
 		do 
 		{
 			let v = readByte (fd)-48;
 			if (v >= 0 && v <= 9)
 			{
 				n = n*10+parseInt(v);
+				if (minus === null) minus = false;
+			}
+			if (minus === null && v === '-'.charCodeAt(0))
+			{
+				minus = true;
 			}
 			else
 			{
 				nr = false;
 			}
 		} while (nr);
+		if (minus) n = -n;
 		return n;
 	},
 	readchar: function ()
