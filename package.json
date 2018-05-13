@@ -1,0 +1,29 @@
+{
+  "name": "was",
+  "version": "1.0.0",
+  "description": "WebAssembly assembler JavaScript (libwabt.js) wrapper",
+  "main": "assemble.js",
+  "repository": "https://github.com/alexandruradovici/was.git",
+  "directories": {
+    "example": "example",
+    "libraries": "libraries"
+  },
+  "dependencies": {
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "was": "./assemble.js"
+  },
+  "engine": {
+    "node": ">=8.6.0"
+  },
+  "keywords": [
+    "webassembly"
+  ],
+  "author": "Alexandru Radovici",
+  "license": "ISC"
+}
