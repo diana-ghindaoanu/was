@@ -18,7 +18,7 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 	}).option('output', {
 		alias: 'o',
 		default: null,
-		desc: 'Output file name, default is input filen ame with the .wasm extension'
+		desc: 'Output file name, default is input file name with the .wasm extension'
 	});
 }, (argv) => {
 	var libwabt = require ('./libwabt.js');
