@@ -158,8 +158,8 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 	}
 	if (argv.verbose) console.log ('Loading imports');
 	let importModules = {};
-	if (argv.verbose) console.log ('Module io from '+path.resolve ('./libraries/io.js'));
-	importModules.io = require (path.resolve ('./libraries/io.js'));
+	if (argv.verbose) console.log ('Module io from libraries/io.js');
+	importModules.io = require ('./libraries/io.js');
 	if (typeof importModules.io.init === 'function') importModules.io.init (memory);
 	if (argv.imports)
 	{
@@ -185,8 +185,8 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 	{
 		let wasm = fs.readFileSync (argv.filename);
 		let wmodule = await WebAssembly.compile (wasm);
-		if (!importModules['io']) importModules['io'] = {};
-		importModules['io'].mem = memory;
+		if (!importModules.io) importModules.io = {};
+		importModules.io.mem = memory;
 		await WebAssembly.Instance (wmodule, importModules);
 	}
 	catch (e)
