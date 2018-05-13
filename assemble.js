@@ -123,20 +123,24 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 		console.error (argv.filename+' '+e.message);
 		process.exit (-1);
 	}
+	console.log (source.toBinary({log: true}).log);
 	// if (argv.log) console.log (binaryout.log);
 	var output = argv.output;
-	if (output === null)
+	if (output !== null)
 	{
-		output = path.join (path.dirname(argv.filename), path.basename (argv.filename, '.wasm')+'.wat');
-	}
-	if (argv.verbose) console.log ('Writing '+output);
-	try
-	{
-		fs.writeFileSync (output, source.toText ({foldeExprs: argv.fold, inlineExport: argv.exports}));
-	}
-	catch (e)
-	{
-		console.error (argv.filename+' '+e.message);
+		if (output === true)
+		{
+			output = path.join (path.dirname(argv.filename), path.basename (argv.filename, '.wasm')+'.wat');
+		}
+		if (argv.verbose) console.log ('Writing '+output);
+		try
+		{
+			fs.writeFileSync (output, source.toText ({foldeExprs: argv.fold, inlineExport: argv.exports}));
+		}
+		catch (e)
+		{
+			console.error (argv.filename+' '+e.message);
+		}
 	}
 }).command(['run <filename> [options]', 'r'], 'Run a file', (yargs) => {
 	yargs.option ('import', {
