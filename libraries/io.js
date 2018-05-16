@@ -83,15 +83,20 @@ module.exports = {
 		let minus = null;
 		do 
 		{
-			let v = readByte (fd)-48;
-			if (v >= 0 && v <= 9)
+			let v = readByte (fd);
+			let vc = v-48;
+			if (vc >= 0 && vc <= 9)
 			{
-				n = n*10+parseInt(v);
+				n = n*10+parseInt(vc);
 				if (minus === null) minus = false;
 			}
 			if (minus === null && v === '-'.charCodeAt(0))
 			{
 				minus = true;
+			}
+			else if (minus === null && (v === 13 || v === 10 || v === 20))
+			{
+				nr = true;
 			}
 			else
 			{
