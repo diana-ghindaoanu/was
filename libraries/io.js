@@ -72,6 +72,14 @@ module.exports = {
 	{
 		process.stdout.write (''+n);
 	},
+	writefloat: function (n)
+	{
+		process.stdout.write (''+n);
+	},
+	writeuint: function (n)
+	{
+		process.stdout.write (''+(n | 0));
+	},
 	writechar: function (v)
 	{
 		process.stdout.write (String.fromCharCode (v));
@@ -93,6 +101,47 @@ module.exports = {
 			if (minus === null && v === '-'.charCodeAt(0))
 			{
 				minus = true;
+			}
+			else if (minus === null && (v === 13 || v === 10 || v === 20))
+			{
+				nr = true;
+			}
+			else
+			{
+				nr = false;
+			}
+		} while (nr);
+		if (minus) n = -n;
+		return n;
+	},
+	readfloat: function ()
+	{
+		let n = 0;
+		let dotn = 0.1;
+		let nr = true;
+		let minus = null;
+		let point = false;
+		do 
+		{
+			let v = readByte (fd);
+			let vc = v-48;
+			if (vc >= 0 && vc <= 9)
+			{
+				if (!point) n = n*10+parseInt(vc);
+				else 
+				{
+					n = n + dotn*vc;
+					dotn = dotn / 10;
+				}
+				if (minus === null) minus = false;
+			}
+			if (minus === null && v === '-'.charCodeAt(0))
+			{
+				minus = true;
+			}
+			if (point === false && v === '.'.charCodeAt(0))
+			{
+				point = true;
 			}
 			else if (minus === null && (v === 13 || v === 10 || v === 20))
 			{
