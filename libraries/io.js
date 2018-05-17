@@ -98,6 +98,7 @@ module.exports = {
 				n = n*10+parseInt(vc);
 				if (minus === null) minus = false;
 			}
+			else
 			if (minus === null && v === '-'.charCodeAt(0))
 			{
 				minus = true;

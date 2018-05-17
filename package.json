@@ -1,6 +1,6 @@
 {
   "name": "was",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "WebAssembly assembler JavaScript (libwabt.js) wrapper",
   "main": "assemble.js",
   "repository": "https://github.com/alexandruradovici/was.git",
