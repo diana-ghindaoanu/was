@@ -158,7 +158,7 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 	{
 		let mem = argv.memory.split (':');
 		if (argv.verbose) console.log ('Alocating memory '+parseInt(mem[0])+'/'+parseInt(mem[1]));
-		memory = WebAssembly.Memory ({initial: parseInt(mem[0]), maximum: parseInt(mem[1])});
+		memory = new WebAssembly.Memory ({initial: parseInt(mem[0]), maximum: parseInt(mem[1])});
 	}
 	if (argv.verbose) console.log ('Loading imports');
 	let importModules = {};
@@ -191,7 +191,7 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 		let wmodule = await WebAssembly.compile (wasm);
 		if (!importModules.io) importModules.io = {};
 		importModules.io.mem = memory;
-		await WebAssembly.Instance (wmodule, importModules);
+		await new WebAssembly.Instance (wmodule, importModules);
 	}
 	catch (e)
 	{
