@@ -88,7 +88,7 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 		desc: 'Folde expresssion'
 	});
 }, (argv) => {
-	var libwabt = require ('./libwabt.js');
+	var libwabt = require ('wabt');
 	var binary = null;
 	// console.log (argv.filename);
 	try
