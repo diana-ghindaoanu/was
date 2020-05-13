@@ -88,7 +88,7 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 		desc: 'Folde expresssion'
 	});
 }, (argv) => {
-	var libwabt = require ('wabt');
+	var libwabt = require ('wabt')();
 	var binary = null;
 	// console.log (argv.filename);
 	try
@@ -153,6 +153,7 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 		desc: 'Set memory, ninPages:maxPages'
 	});
 }, async (argv) => {
+	console.log (argv);
 	let memory = null;
 	if (argv.memory)
 	{
