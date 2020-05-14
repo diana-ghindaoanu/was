@@ -153,7 +153,6 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 		desc: 'Set memory, ninPages:maxPages'
 	});
 }, async (argv) => {
-	console.log (argv);
 	let memory = null;
 	if (argv.memory)
 	{
