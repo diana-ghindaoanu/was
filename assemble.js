@@ -196,6 +196,7 @@ yargs.command(['$0 <filename> [options]', 'assemble', 'a'], 'Assemble a file', (
 	catch (e)
 	{
 		console.error (argv.filename+' '+e.message);
+		process.exit (255);
 	}
 })
 	.option('verbose', {
